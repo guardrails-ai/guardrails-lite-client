@@ -9,4 +9,4 @@ fi
 docker build \
     -f Dockerfile \
     --build-arg="GUARDRAILS_TOKEN=$GUARDRAILS_TOKEN" \
-    -t "guardrails-client-app:dev" .;
+    -t "guardrails-client-app:air-gapped" .;

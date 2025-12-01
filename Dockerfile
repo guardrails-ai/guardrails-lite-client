@@ -27,10 +27,10 @@ COPY requirements*.txt .
 RUN pip install -r requirements-lock.txt
 
 # Run the Guardrails configure command to create a .guardrailsrc file
-RUN guardrails configure --enable-metrics --enable-remote-inferencing  --token $GUARDRAILS_TOKEN
+RUN guardrails configure --disable-metrics --disable-remote-inferencing  --token $GUARDRAILS_TOKEN
 
 # Install any validators from the hub you want
-RUN guardrails hub install hub://guardrails/toxic_language>=0.0.2 --no-install-local-models
+RUN guardrails hub install hub://guardrails/toxic_language>=0.0.2 --install-local-models
 
 # The ToxicLanguage Validator uses the punkt tokenizer, so we need to download that to a known directory
 ## Set the directory for nltk data
@@ -42,6 +42,7 @@ RUN python -m nltk.downloader -d /opt/nltk_data punkt_tab
 # Copy the rest over
 # We use a .dockerignore to keep unwanted files exluded
 COPY . .
+COPY prod.guardrailsrc /root/.guardrailsrc
 
 EXPOSE 8000
 

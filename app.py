@@ -37,10 +37,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-if  os.getenv("OPENAI_API_KEY") is None:
-    raise ValueError("OPENAI_API_KEY environment variable is not set!")
-
 @app.exception_handler(Exception)
 async def error_handler(request: Request, exc: Exception):
     import traceback
@@ -77,11 +73,9 @@ async def chat_completions(body: ChatCompletionRequestBody):
     )
 
     completion_start = time()
-    completion = litellm.completion(
-        model="gpt-5-nano",
-        messages=messages,
-        api_key=OPENAI_API_KEY,
-    )
+    completion = litellm.ModelResponse(choices=[
+        litellm.Choices(message=litellm.Message(content="Hello, world!", role="assistant"))
+    ])
     completion_end = time()
     completion_duration = completion_end - completion_start
     logger.info(f"==> Chat Completion took {completion_duration} seconds")
