@@ -1,17 +1,13 @@
-# guardrails-lite-server
-A bare minimum deployment of guardrails as a service.
+# guardrails-lite-client
+A bare minimum deployment showing how to use guardrails client side (in an application).  This deployment contains a simple OpenAI compliant chat completions endpoint.  The completions are then validated by a Guard using the ToxicLanguage Validator.
 
-
-For this deployment, we use a config file to define our Guards so we don't need a database.
-
-## Run the server locally
+## Run the server locally with docker
 
 ### Linux and MacOS
 1. Clone this repository
-2. `make env`
-3. `source ./.venv/bin/activate`
-4. `make build`
-5. `make start`
+2.  Make sure there is a valid Guardrails AI API Key in the `GUARDRAILS_TOKEN` environment variable.  `./buildscripts/build/.sh` uses this for performing hub installs during the Docker build.
+3. `make build`
+4. `make start`
 
 Once the server is up and running, you can check out the Swagger docs at http://localhost:8000/docs
 

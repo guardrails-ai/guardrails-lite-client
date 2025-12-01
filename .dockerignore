@@ -1,4 +1,7 @@
 Dockerfile
 *.env
+!docker.env
 Makefile
 buildscripts
+guardrails-client-app
+*.tar
