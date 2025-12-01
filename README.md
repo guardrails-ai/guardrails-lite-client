@@ -17,6 +17,8 @@ Once the server is up and running, you can check out the Swagger docs at http://
 
 To verify the container's offline status, turn off your wifi and hit the /chat/completions endpoint from the swagger docs.
 
+You can also check the contents of the container by inspecting the tar generated via `./buildscripts/export.sh`.
+
 ## Productionizing
 We include a Dockerfile that shows the basic steps of containerizing this server.
 
