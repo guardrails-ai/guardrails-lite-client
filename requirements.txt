@@ -1,4 +1,4 @@
 guardrails-ai>=0.7.0
-litellm
+litellm<1.82.6
 fastapi
 uvicorn
